@@ -1,4 +1,8 @@
 可參考文件:
 
 網址:
-1.  Python Cookbook 3rd Edition Documentation https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html 
+1.  Python Cookbook 3rd Edition Documentation     https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html 
+
+
+RequirePackages 目錄:
+紀錄: 使用 requirements.txt 管理套件相依性
