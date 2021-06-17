@@ -6,3 +6,8 @@
 
 RequirePackages 目錄:
 紀錄: 使用 requirements.txt 管理套件相依性
+
+
+SpeechRecognition 目錄:
+紀錄: 使用 SpeechRecognition 套件，把語音轉譯成文字 
+抱歉遺漏參考出處，會努力補上。
