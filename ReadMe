@@ -11,3 +11,8 @@ RequirePackages 目錄:
 SpeechRecognition 目錄:
 紀錄: 使用 SpeechRecognition 套件，把語音轉譯成文字 
 抱歉遺漏參考出處，會努力補上。
+
+YTDownload 目錄:
+1. YT Chanel: 可能會存在下載爭議，因此下載內容研究完後將刪除
+2. 實作參考網址: https://swf.com.tw/?p=1357
+3. 使用 validators 及  pytube 套件。 (1) 檢查有效網址 (2) 下載 YT 套件。
