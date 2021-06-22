@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_76a82d1041004a80b576ef2cd7cb20ba {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_76a82d1041004a80b576ef2cd7cb20ba" ></div>
+        
+</body>
+<script>    
+    
+            var map_76a82d1041004a80b576ef2cd7cb20ba = L.map(
+                "map_76a82d1041004a80b576ef2cd7cb20ba",
+                {
+                    center: [35.709635, 139.810851],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4441636704fe463194269ae8bbff2720 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+    
+            var marker_2c4a04adb1da4c4db3f68dd6d4b43f75 = L.marker(
+                [35.712326, 139.804037],
+                {}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+    
+        var popup_de20034b7388490093a2511db4da5ff7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4e76bbb0fa194aa0b9e28575efa972d5 = $(`<div id="html_4e76bbb0fa194aa0b9e28575efa972d5" style="width: 100.0%; height: 100.0%;">Skytree</div>`)[0];
+            popup_de20034b7388490093a2511db4da5ff7.setContent(html_4e76bbb0fa194aa0b9e28575efa972d5);
+        
+
+        marker_2c4a04adb1da4c4db3f68dd6d4b43f75.bindPopup(popup_de20034b7388490093a2511db4da5ff7)
+        ;
+
+        
+    
+    
+            var marker_9d4f392c9b2f40f0905279dd74787541 = L.marker(
+                [35.709635, 139.810851],
+                {}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+    
+        var popup_b015174d6dbc402bbf4bddcba7dc81bb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3369b083e7904e898443e34dd4bb953f = $(`<div id="html_3369b083e7904e898443e34dd4bb953f" style="width: 100.0%; height: 100.0%;"><b>Skytree</b></div>`)[0];
+            popup_b015174d6dbc402bbf4bddcba7dc81bb.setContent(html_3369b083e7904e898443e34dd4bb953f);
+        
+
+        marker_9d4f392c9b2f40f0905279dd74787541.bindPopup(popup_b015174d6dbc402bbf4bddcba7dc81bb)
+        ;
+
+        
+    
+    
+            var marker_b3714aaf92b44d0a81792149d0c88054 = L.marker(
+                [35.707595, 139.79553],
+                {}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+    
+            var icon_1434fe50873847a4846fde9a9bb53f2b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "bed", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_b3714aaf92b44d0a81792149d0c88054.setIcon(icon_1434fe50873847a4846fde9a9bb53f2b);
+        
+    
+        var popup_a1d716cc563d4cbeb3df39c71e9474a8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e56565c8a5844e78b90a5bc45ed6206b = $(`<div id="html_e56565c8a5844e78b90a5bc45ed6206b" style="width: 100.0%; height: 100.0%;"><i>Hotel</i></div>`)[0];
+            popup_a1d716cc563d4cbeb3df39c71e9474a8.setContent(html_e56565c8a5844e78b90a5bc45ed6206b);
+        
+
+        marker_b3714aaf92b44d0a81792149d0c88054.bindPopup(popup_a1d716cc563d4cbeb3df39c71e9474a8)
+        ;
+
+        
+    
+    
+            var marker_dbc5501f7fa64b85aa1e4df636d466a7 = L.marker(
+                [35.715092, 139.796666],
+                {}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+    
+            var icon_434b3b26d7d94955b014ff9cff0367cb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_dbc5501f7fa64b85aa1e4df636d466a7.setIcon(icon_434b3b26d7d94955b014ff9cff0367cb);
+        
+    
+        var popup_a56b08fd5c8a4e8281ee705f7d38596d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3528f827cb564802b62b732d6d0afdec = $(`<div id="html_3528f827cb564802b62b732d6d0afdec" style="width: 100.0%; height: 100.0%;"><b>Asakusa Temple</b></div>`)[0];
+            popup_a56b08fd5c8a4e8281ee705f7d38596d.setContent(html_3528f827cb564802b62b732d6d0afdec);
+        
+
+        marker_dbc5501f7fa64b85aa1e4df636d466a7.bindPopup(popup_a56b08fd5c8a4e8281ee705f7d38596d)
+        ;
+
+        
+    
+    
+            var circle_c02391a4c314411da92cdc28d9d2fe4a = L.circle(
+                [35.709635, 139.810851],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.5, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+    
+        var popup_007789e7139e4970905515fb47937fb5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_49279ea73db54fa4a05d5a27773a5cb3 = $(`<div id="html_49279ea73db54fa4a05d5a27773a5cb3" style="width: 100.0%; height: 100.0%;">Skytree</div>`)[0];
+            popup_007789e7139e4970905515fb47937fb5.setContent(html_49279ea73db54fa4a05d5a27773a5cb3);
+        
+
+        circle_c02391a4c314411da92cdc28d9d2fe4a.bindPopup(popup_007789e7139e4970905515fb47937fb5)
+        ;
+
+        
+    
+    
+            var poly_line_117af0cf86a84bbbbdaa8f4c692e282a = L.polyline(
+                [[35.712326, 139.804037], [35.709635, 139.810851], [35.707595, 139.79553], [35.712326, 139.804037]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 8}
+            ).addTo(map_76a82d1041004a80b576ef2cd7cb20ba);
+        
+</script>
