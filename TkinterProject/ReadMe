@@ -1,5 +1,12 @@
 Python 視覺化開發
 tkinter 套件 -- 容易開發   
+-  視窗物件生成
+-  佈局
+-  widget 元件 + 事件 command = callback 
+-  視窗物件生成..mainloop()
+
+參考書籍: 
+Python GUI 設計 [!https://www.tenlong.com.tw/products/9789869772648]
 
 
 可參考網頁:
