@@ -18,3 +18,128 @@ https://docs.python.org/3/library/tkinter.html
 
 參考教學視頻:
 https://www.youtube.com/watch?v=bXoOR4i6b8c&list=PLSCgthA1Anie_vHuCOt3hCXN6HIl8Ph8u&index=7
+
+
+以下暫存:
+
+python爬蟲 - 個股歷年股利
+https://medium.com/renee0918/python%E7%88%AC%E8%9F%B2-%E5%80%8B%E8%82%A1%E6%AD%B7%E5%B9%B4%E8%82%A1%E5%88%A9-392ecbc74443 
+
+(公開資訊觀測站: https://mops.twse.com.tw/mops/web/index)
+股利分派情形
+https://mops.twse.com.tw/mops/web/t05st09   
+
+https://medium.com/renee0918/python-%E7%88%AC%E5%8F%96%E5%80%8B%E8%82%A1%E6%AD%B7%E5%B9%B4%E8%82%A1%E5%83%B9%E8%B3%87%E8%A8%8A-b6bc594c8a95  
+
+
+台灣股市資訊網 GoodInfo
+https://goodinfo.tw/tw/StockDividendPolicy.asp?STOCK_ID=2409
+
+台灣上市上櫃股票價格擷取（Fetch Taiwan Stock Exchange data）含即時盤、台灣時間轉換、開休市判斷 ==> https://github.com/toomore/grs
+https://github.com/toomore/grs
+
+https://aronhack.com/zh/retrieve-stock-historical-data-with-python-and-yahoo-finance-api/
+
+https://medium.com/@bob800530/%E7%B6%B2%E8%B7%AF%E7%88%AC%E8%9F%B2-%E6%89%BE%E5%B0%8B%E7%A9%A9%E5%AE%9A%E4%B8%94%E8%82%A1%E5%88%A9%E6%9C%80%E9%AB%98%E7%9A%84%E8%82%A1%E7%A5%A8-2-python%E7%88%AC%E5%8F%96%E6%AD%B7%E5%B9%B4%E8%82%A1%E5%88%A9%E8%B3%87%E8%A8%8A-24e1a38ceb90
+
+從零開始的套牢生活 - AI股票預測系統 共 30 篇
+https://ithelp.ithome.com.tw/articles/10261492?sc=pt
+
+新一代的网络请求库 Httpx
+https://zhuanlan.zhihu.com/p/259674921
+
+
+Httpx：一款针对HTTP的安全研究工具
+https://www.freebuf.com/sectool/273382.html 
+
+python-httpx的具體使用
+https://www.it145.com/9/175723.html 
+
+HTTPX
+https://www.python-httpx.org/
+
+
+pip --trusted-host pypi.org --trusted-host files.pythonhosted.org  install  httpx
+
+
+
+
+Python-Tkinter圖形化介面設計（詳細教學 ）
+https://tw511.com/a/01/29489.html#3.1.3
+
+
+
+https://goodinfo.tw/tw/StockDividendSchedule.asp?STOCK_ID=1451
+https://mops.twse.com.tw/mops/web/t05st09_2
+
+
+from tkinter import *
+import webbrowser
+
+def callback(url):
+    webbrowser.open_new(url)
+
+root = Tk()
+link1 = Label(root, text="Google Hyperlink", fg="blue", cursor="hand2")
+link1.pack()
+link1.bind("<Button-1>", lambda e: callback("http://www.google.com"))
+
+link2 = Label(root, text="Ecosia Hyperlink", fg="blue", cursor="hand2")
+link2.pack()
+link2.bind("<Button-1>", lambda e: callback("http://www.ecosia.org"))
+
+root.mainloop()
+
+
+https://learnku.com/articles/47088
+Tkinter (01) 基本选项的说明
+
+https://www.runoob.com/python/python-exceptions.html
+
+
+
+webbrowser --- 方便的 Web 浏览器控制工具
+https://docs.python.org/zh-cn/3/library/webbrowser.html
+
+
+$ python3 -m webbrowser -t 'www.pynote.net'
+$ python3 -m webbrowser -t '1.jpg'
+$ python3 -m webbrowser -t '2.png'
+$ python3 -m webbrowser -t '3.gif'
+$ python3 -m webbrowser -t '4.svg'
+$ python3 -m webbrowser -t '5.pdf'
+
+
+其實不用安裝requests就可以下載東西
+python的urllib.request.urlopen會傳回一個<http.client.HTTPResponse object>
+類似c語言的FILE*或python的open(filename, mode)
+以下是簡單的下載方式
+import urllib.request
+import webbrowser, os
+a=urllib.request.urlopen(input('url='))
+p=os.path.abspath(input("save as_"))
+f=open(p, 'wb')
+f.write(a.read())
+print("successfully saved at", p)
+webbrowser.open(p)
+若輸入https://python.org/ 會把html下載起來
+我用這方法下載pycharm-edu.exe 約要半小時多
+-https://download-cdn.jetbrains.com/python/pycharm-edu-2021.1.exe
+我也下載Dev-cpp 很快就下載好了
+-https://nchc.dl.sourceforge.net/project/orwelldevcpp/Setup%20Releases/Dev-Cpp%205.11%20TDM-GCC%204.9.2%20Setup.exe
+sublime Text 4
+-https://download.sublimetext.com/sublime_text_build_4107_x64_setup.exe
+Object-Oriented Programming With ANSI-C
+-https://www.cs.rit.edu/~ats/books/ooc.pdf
+a.length可以知道大小 但是下載html時會失敗
+webbrowser.open('https://www.google.com/maps/search/台北車站' + i)
+
+
+
+Python webbrowser.open方法代碼示例 - 純淨天空 (vimsky.com)
+
+
+python pyodbc使用方法_Jack2013tong的博客-CSDN博客_pyodbc
+
+https://blog.csdn.net/huwei2003/article/details/107387919
+
