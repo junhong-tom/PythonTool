@@ -1,31 +1,19 @@
 import re
 from datetime import datetime
-# import pyodbc
+import pyodbc
 
 tempColumnString = '''
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'{CName}',
 @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'{TableName}', 
 @level2type=N'COLUMN',@level2name=N'{ColumnName}';
-GO
 '''
 
 tempTableString = '''
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'{CName}', 
 @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'{TableName}'
-GO
 '''
 
-
-# CName = '分公司別'
-# TableName = 'HSCB'
-# ColumnName = 'BKNO'
-
-tempCreateTableString = '''
-CREATE TABLE "dbo".{} 
-(
-{}
-);
-'''
+tempCreateTableString = '''\n CREATE TABLE "dbo".{} \n ( \n  {} \n );\n '''
 TableInsertString = "Insert into {DBName}.dbo.{TableName} {ColumnName} values {ColumnValues};"
 
 
@@ -44,12 +32,18 @@ def TableAnalysis(SqlContext):
 
     temp_table = result.group(0)
     # print(temp_table)
-    table_column = re.sub("SUPPLEMENTAL LOG .*\n", '', result.group(0).replace(" (\t",'').replace(" ) SEGMENT CREATION IMMEDIATE",''))
+    table_column = re.sub("SUPPLEMENTAL LOG .*\n", '', temp_table.replace(" (\t",'').replace(" ) SEGMENT CREATION IMMEDIATE",''))
+    table_column = re.sub("BUFFER_POOL .*\n", '', table_column)
+    table_column = re.sub("TABLESPACE .*\n", '', table_column)
+    table_column = re.sub("PCTINCREASE .*\n", '', table_column)
+    table_column = re.sub("USING INDEX .*\n", '', table_column)
+    table_column = re.sub("STORAGE\(INITIAL .*\n", '', table_column)
+    table_column = re.sub("CONSTRAINT .*\n", '', table_column)
     table_column = table_column.replace(' TIMESTAMP ',' datetime2').replace('SYSTIMESTAMP',"getdate()")
     table_column = table_column.replace("ENABLE",'').replace(" BYTE",'')
     table_column = table_column.replace('VARCHAR2','VARCHAR')
     table_column = table_column.replace('NVARCHAR2','NVARCHAR')
-
+    # print(table_column)
     tableName = table_column.split("\n")[0].split(".")[1]
     #print(tableName)
 
@@ -61,7 +55,7 @@ def TableAnalysis(SqlContext):
         if _.strip().find("NUMBER") > -1 :
             # Number Convert
             tempNumberFormat = _.strip().replace("NUMBER(",'').replace(")",'').split(" ")
-            #                 print(tempNumberFormat)
+            # print(tempNumberFormat)
             IntOrDem = tempNumberFormat[1].split(",")
             if IntOrDem[1] == '0':
                 # 'Int Kind'
@@ -75,13 +69,17 @@ def TableAnalysis(SqlContext):
                 pass
             else:
                 # 'Dec kind'
-                temp_string = temp_string.replace("NUMBER",'DECIMAL')
+                # print(_)
+                temp_string = _.replace("NUMBER",'DECIMAL').strip()
                 pass
             ColumnList.append(temp_string)
             pass
         else:
             # Not Number
+
             if len(_.strip()) > 0 :
+                # print("Not Number")
+                # print(_)
                 ColumnList.append(_.strip())
             pass
 
@@ -148,8 +146,8 @@ def COMMENTAnalysis(SqlContext):
     return "".join(commentList)
 
 
-def InserDataAnalysis(DataContext,DBName= 'jsdata2',DatatimeType=2):
-
+def InserDataAnalysis(DataContext,DBName):
+    DatatimeType=2
     InsertData = DataContext.split('\n')
 
     InsertList=[]
@@ -180,7 +178,7 @@ def InserDataAnalysis(DataContext,DBName= 'jsdata2',DatatimeType=2):
                 # for datatime2 型態
                 if DatatimeType == 2:
                     date_object = datetime.strptime(adj_date_format, "%d-%m-%y %I.%M.%S.%f %p").strftime("%Y-%m-%d %H:%M:%S.%f")
-                # for  資料庫欄位型態 datatime 非 datatime2 型態
+                # for datatime  型態
                 if DatatimeType == 1:
                     date_object = datetime.strptime(adj_date_format, "%d-%m-%y %I.%M.%S.%f %p").strftime("%Y-%m-%d %H:%M:%S")
                 #                 print(date_object)
@@ -201,3 +199,58 @@ def InserDataAnalysis(DataContext,DBName= 'jsdata2',DatatimeType=2):
 
 
     return "\n".join(InsertList)
+
+
+
+def InsertMutilData(SqlContext,DBName):
+    data_value_list=[]
+    data_context = InserDataAnalysis(SqlContext,DBName).split("\n")
+    data_value_list.append(data_context[0].replace(';',''))
+
+    for _ in data_context[1:]:
+        data_value_list.append(" ".join(_.split(" ")[5:]).replace(';',''))
+
+    return ",\n".join(data_value_list)
+
+def SqlCommand(HostIP,DataBaseName,UID,PWD,SqlCommandContext):
+
+    CONNECTION_STATEMENT = "DRIVER={};SERVER={};Port=1433; DATABASE={};unicode_results=True;UID={};PWD={}"
+    ConnectSqlString = CONNECTION_STATEMENT.format("SQL Server", HostIP, DataBaseName,UID, PWD)
+    print(ConnectSqlString)
+
+    RunCount = ''
+    try:
+        ConnectObject = pyodbc.connect(ConnectSqlString,timeout=5)
+
+        cursor = ConnectObject.cursor()
+        try:
+
+            cursor.execute(SqlCommandContext)
+            RunCount = cursor.rowcount
+            print('RunCount: %s' % str(RunCount))
+            if RunCount == -1:
+                try:
+                    print('fetchone: %s' % str(cursor.fetchone()))
+                except Exception as queryError:
+                    print('--->')
+                    print(queryError)
+
+
+        except Exception as executeError:
+            print(executeError)
+
+
+
+
+        ConnectObject.commit()
+
+        ConnectObject.close()
+    except Exception as connectError:
+        print(connectError)
+
+
+
+    return
+
+
+#  pyinstaller -F -c RunSqlConvert.py  --noconsole

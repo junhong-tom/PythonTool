@@ -1,5 +1,5 @@
 import tkinter as tk
-from  tkinter import Button, StringVar, Label ,LEFT,W,WORD ,Text,END
+from  tkinter import Button, StringVar, Label ,LEFT,W,WORD ,Text,END,Scrollbar,HORIZONTAL,RIGHT
 from tkinter import filedialog
 from tkinter.scrolledtext import ScrolledText
 
@@ -65,7 +65,7 @@ def ConverInsertDataSchema():
     #  回傳的類型為 str，若取消的話會回傳一個空的 tuple ()
     #  title 參數: 為設定對話框的標題
     #  initialdir='~/' 參數: 初始的目錄來開啟檔案設定
-    print(file_path)
+    #print(file_path)
 
     if not file_path:
         print('file path is empty')
@@ -77,7 +77,7 @@ def ConverInsertDataSchema():
         pass
     else:
 
-        InsertContext = InserDataAnalysis(SqlContext,DBName='',DatatimeType=2)
+        InsertContext = InserDataAnalysis(SqlContext,'CFP')
 
         Text_001.insert(END, InsertContext)
 
@@ -87,31 +87,55 @@ def ConverInsertDataSchema():
 
 
 root = tk.Tk()
+root.resizable(0,0)
 root.title("ConvertSqlSchema")
-root.geometry("1100x500")
+root.geometry("550x600")
 
 
-ConverTableSchemaButton = Button(text='資料表轉換',command=ConverTableSchema)
-ConverTableSchemaButton.grid(row=0,column=0)
+ConverTableSchemaButton = Button(text='資料表轉換',command=ConverTableSchema,width=20,bg="red",font="微軟正黑 +12")
+ConverTableSchemaButton.grid(row=0,column=0,padx=10,pady=1)
 
-SaveTableSchemaButton = Button(text='資料表存檔',command=SaveTableSchema)
+SaveTableSchemaButton = Button(text='資料表存檔',command=SaveTableSchema,width=20,bg="skyblue",font="微軟正黑 +12")
 SaveTableSchemaButton.grid(row=0,column=1)
 # Label('').grid(row=0,column=2)
 
-ConverInsertDataSchemaButton = Button(text='匯入資料轉換',command=ConverInsertDataSchema)
-ConverInsertDataSchemaButton.grid(row=1,column=0)
-SaveTableSchemaButton = Button(text='匯入資料存檔',command=SaveTableSchema)
+ConverInsertDataSchemaButton = Button(text='匯入資料轉換',command=ConverInsertDataSchema,width=20,bg="red",font="微軟正黑 +12")
+ConverInsertDataSchemaButton.grid(row=1,column=0,padx=10)
+SaveTableSchemaButton = Button(text='匯入資料存檔',command=SaveTableSchema,width=20,bg="skyblue",font="微軟正黑 +12")
 SaveTableSchemaButton.grid(row=1,column=1)
 # Label('').grid(row=1,column=2)
 
 
-Text_001= ScrolledText(root,width=120,wrap=tk.WORD,font="微軟正黑 +12")
-#Text_001.grid(row=2,column=0,fill=tk.BOTH, side=tk.LEFT, expand=True)
-#Text_001.pack(fill=tk.BOTH,side=tk.LEFT,expand=True)
-Text_001.grid(row=2,column=0,columnspan=5,sticky='nesw', padx=3, pady=3,)
-#Text_001.config(fill=tk.BOTH,side=tk.LEFT,expand=True)
-# Text_001= Text( wrap=WORD)
-# Text_001.grid(row=2,column=0,columnspan=3)
+Text_001= ScrolledText(root,wrap=tk.WORD,font="微軟正黑 +12")
+Text_001.config(wrap=tk.WORD,font="微軟正黑 +12")
+Text_001.place(x=10,y=60,width=500,height=500)
+
+# # text_v = "Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming."
+# # text_h = ("\nNASA \n Google \nNokia \nFacebook \n Netflix \n Expedia \n Reddit \n Quora \n MIT\n Udemy \n Shutterstock \nSpotify\nAmazon\nMozilla\nDropbox")
+#
+# #Add a Vertical Scrollbar
+# scroll_v = Scrollbar(root)
+# #scroll_v.pack(side= RIGHT,fill="y")
+# scroll_v.place(relheight=1)
+#
+# #Add a Horizontal Scrollbar
+# scroll_h = Scrollbar(root, orient= HORIZONTAL)
+# scroll_h.place(relwidth=1)
+# #scroll_h.pack(side= BOTTOM, fill= "x")
+# #Add a Text widget
+# Text_001 = Text(root, height= 500, width= 350, yscrollcommand= scroll_v.set,
+#             xscrollcommand = scroll_h.set, wrap= tk.WORD, font= ('Helvetica 12'))
+# # Text_001 = Text(root, height= 500, width= 350, yscrollcommand= scroll_v.set,
+# #                 xscrollcommand = scroll_h.set, wrap= None, font= ('Helvetica 12'))
+# #Text_001.pack(fill = BOTH, expand=0)
+# Text_001.place(x=20,y=60,width=500,height=300)
+# # Text_001.insert(END, text_v)
+# # Text_001.insert(END, text_h)
+#
+# #Attact the scrollbar with the text widget
+# scroll_h.config(command = Text_001.xview)
+# scroll_v.config(command = Text_001.yview)
+#
 
 
 # scr = scrolledtext.ScrolledText(self.monty, width=30, height=3, wrap=tk.WORD)
