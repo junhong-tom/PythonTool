@@ -216,7 +216,7 @@ def SqlCommand(HostIP,DataBaseName,UID,PWD,SqlCommandContext):
 
     CONNECTION_STATEMENT = "DRIVER={};SERVER={};Port=1433; DATABASE={};unicode_results=True;UID={};PWD={}"
     ConnectSqlString = CONNECTION_STATEMENT.format("SQL Server", HostIP, DataBaseName,UID, PWD)
-    print(ConnectSqlString)
+    # print(ConnectSqlString)
 
     RunCount = ''
     try:
@@ -230,14 +230,18 @@ def SqlCommand(HostIP,DataBaseName,UID,PWD,SqlCommandContext):
             print('RunCount: %s' % str(RunCount))
             if RunCount == -1:
                 try:
-                    print('fetchone: %s' % str(cursor.fetchone()))
+
+                    RunCount = cursor.fetchone()
+                    print('fetchone: %s' % str(RunCount))
                 except Exception as queryError:
-                    print('--->')
-                    print(queryError)
+                    #print('--->')
+                    RunCount = str(queryError)
 
 
         except Exception as executeError:
-            print(executeError)
+            # print("1==>")
+            # print(executeError)
+            raise(executeError)
 
 
 
@@ -246,11 +250,13 @@ def SqlCommand(HostIP,DataBaseName,UID,PWD,SqlCommandContext):
 
         ConnectObject.close()
     except Exception as connectError:
-        print(connectError)
+        # print("2==>")
+        # print(connectError)
+        raise(connectError)
 
 
 
-    return
+    return RunCount
 
 
 #  pyinstaller -F -c RunSqlConvert.py  --noconsole
