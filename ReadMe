@@ -20,3 +20,47 @@ YTDownload 目錄:
 Folium 目錄:
 1. 地圖視覺化套件
 2. 實作參考網址: https://blog.yeshuanova.com/2017/10/python-visulization-folium/
+
+
+
+Gitpython 套件
+import git 
+try:
+    repoLab01 = git.Repo.clone_from(url=GitRepoUrl,to_path=ToPath)
+except:
+    repoLab01 = git.Repo(ToPath)
+    
+remote_origin = repoLab01.remotes.origin
+out = remote_origin.pull()
+  
+def ConvertString(context):
+#     context = "\\345\\260\\210\\345\\215\\200"
+    context = f"b'{context}'"  # 这时候 a = "b'\\346\\254\\242'"
+    context = eval(context) # 执行这步后， a = b"\346\254\242"
+    context = str(context,encoding="utf-8") # 将字节转换成字符串
+    return context.replace('"','')
+
+fileList=[]
+for _ in list(repoLab01.iter_commits()):
+
+    for _subitem in _.stats.files.keys():        
+        
+        filePath = os.path.join(ToPath,ConvertString(_subitem))
+
+        if os.path.exists(filePath):
+            fileList.append(ConvertString(_subitem))
+
+print(fileList)
+
+git_log = repoLab01.iter_commits()
+git_log
+
+for item in git_log:
+    print(item)
+    print("message: "+item.message)
+    print("hexsha: "+item.hexsha)
+    #files = repoLab01.git.show("--pretty=","--name-only",item.hexsha)
+    files = repoLab01.git.show("--pretty=","--name-only",item.hexsha)
+    print(files)
+    print("  ===Next===   \n")
+    
