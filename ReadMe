@@ -64,3 +64,31 @@ for item in git_log:
     print(files)
     print("  ===Next===   \n")
     
+
+
+# Python Sqlite 知識
+Python SQL 資料庫 : 數據持久化 全攻略 | SQLite x MySQL x SQLAlchemy | 人生苦短 我用 Python 【Gamma Ray 軟體工作室】
+閱讀紀錄
+https://www.youtube.com/watch?v=bgFuVih778w
+
+步驟  Sqlite ==> 檔案 IO 
+1.  創建檔案 -- 副檔名為 .db 或 .sqlite
+2.  工具: • DB Browser for SQLite - https://sqlitebrowser.org/
+3.  import sqlite3 #導入套件
+    connectingObject = sqlite3.connect(FileName) # 連線
+    cursor = connectingObject.cursor() # 操作
+    cursor.execute(資料庫語法) # 語法執行
+    records = cursor.fetchall() # 結果
+    cursor.close()
+    connectingObject.close()
+    
+#  python 關於 MYSQL 套件 (服務器)
+pymysql
+mysql connector
+mysqldb
+
+# SQLALchemy SQL 物件框架 object Relational Mapping (ORM)
+程式中的物件 對應到  資料庫的 Table
+對物件進行 增刪改查 相當於 對資料庫的資料表進行 增刪改查
+    
+    
