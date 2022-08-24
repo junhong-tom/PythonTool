@@ -90,5 +90,82 @@ mysqldb
 # SQLALchemy SQL 物件框架 object Relational Mapping (ORM)
 程式中的物件 對應到  資料庫的 Table
 對物件進行 增刪改查 相當於 對資料庫的資料表進行 增刪改查
+
+pyTranscriber影片字幕產生器 使用教學
+# http://nas.kses.ntpc.edu.tw/work/118/blog/show.asp?id=38&blog_id=196
+
+https://yanwei-liu.medium.com/%E4%BD%BF%E7%94%A8python%E9%80%B2%E8%A1%8C%E8%AA%9E%E9%9F%B3%E8%BE%A8%E8%AD%98-%E8%81%B2%E9%9F%B3%E8%BD%89%E6%96%87%E5%AD%97-9ab12b750ffe
+使用Python進行語音辨識(聲音轉文字)
+
+https://www.cnblogs.com/zhe-hello/p/13273523.html
+import speech              # 文字轉語音套件
+import speech_recognition  # 語音轉文字套件
+
+
+http://yhhuang1966.blogspot.com/2017/08/google-api.html
+利用 Google 語音辨識 API 將語音轉成文字
+
+
+https://ithelp.ithome.com.tw/articles/10246295
+將語音訊息轉成文字內容
+
+
+https://aws.amazon.com/tw/transcribe/customers/ 
+「Amazon Transcribe 是一種高度準確、易於使用的語音轉文字服務
+
+https://cloud.google.com/speech-to-text?hl=zh-tw
+Speech-to-Text
+您可以透過採用 Google AI 研究和技術精華的 API，將語音準確轉換為文字。
+
+
+
+https://sites.google.com/site/rsshdat/emergetechnology/speech-recognition
+瑞祥高中生活科技教學平台
+家齊高中李國源老師分享的人工智慧簡報
+https://drive.google.com/file/d/1HQ6VzLBCFUjZd5xNduZoD054nmudoxVx/view?usp=sharing
+
+利用 Google gTTS 文字轉語音 API 讓電腦說話
+http://yhhuang1966.blogspot.com/2017/08/google-gtts-api.html
+安裝套件
+   安裝SpeechRecognition語音辨識套件
+   pip install SpeechRecognition
+   安裝pyAudio麥克風套件
+   pip install pyAudio
+   ---------------------------------------------------
+   如果發生錯誤訊息請改用pipwin
+   pip install pipwin
+   pipwin install pyaudio
+   ---------------------------------------------------
+   安裝gTTS 將文字轉換為音檔套件
+   pip install gTTS
+   安裝播音套件
+   pip install pygame
+   安裝py-googletrans翻譯套件
+   pip install py-googletrans
+    Step1.安裝 Git 
+    Step2.在Git CMD中輸入： 將會下載安裝資料夾 “py-googletrans”      
+    git clone https://github.com/BoseCorp/py-googletrans.git 
+    Step3.在Anacoda Prompt 中用 cd 指令進入安裝資料夾 “py-                         googletrans”           
+    cd “py-googletrans所在的路徑” 
+    Step4. 延續Step3,執行手動安裝           
+    python setup.py install
+    
+    Translation API 的辨識引擎支援各種語言的詞組式機器翻譯 (PBMT) 模型與神經機器翻譯 (NMT) 模型。
+
+您必須透過在本頁面註記的語言代碼參數，在辨識要求內指定這些語言。大多數語言代碼參數都符合 ISO-639-1 識別碼 (註記項目除外)
+
+中文(繁體)zh-TW  英文en  日文  ja  德文de  韓文ko  法文fr  印尼文id  泰文th    越南文vi
+
+https://cloud.google.com/translate/docs/languages?hl=zh-tw
+
+https://hkgoldenmra.blogspot.com/2020/07/blog-post.html
+將影片檔及聲音檔輸出成字幕檔
+
+https://www.dotblogs.com.tw/RYNote/2021/01/14/105447
+[Python] 5.光學字元辨識(OCR)，圖片辨識文字
+pip install pillow
+pip install pytesseract
+
+http://icekuo.blogspot.com/2018/12/blog-post.html
     
     
